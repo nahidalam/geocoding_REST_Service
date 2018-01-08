@@ -42,16 +42,10 @@ def index():
     return "Geocoding RESTful Service"
 
 @app.route('/geocode/api/v1.0/json',methods=['GET'])
-<<<<<<< HEAD:geocoding.py
-=======
-#@app.route('/geocode/api/v1.0/<addr>',methods=['GET'])
-#def getLatLng(addr):
->>>>>>> 65742da72e367963f9ec6ccec7d5135846d25e0b:geocoding.py
 def getLatLng():
     if 'address' in request.args:
         addr = request.args['address']
         json_data = findGeoData(addr, 0)
-<<<<<<< HEAD:geocoding.py
 
         if json_data['results'] == None: #If Google Maps API is not working, work with HERE API
             json_data_HERE = findGeoData(addr, 1)
@@ -64,20 +58,6 @@ def getLatLng():
             return jsonify({'Latitude':lat, 'Longitude':lng})
 
     else: #URL format invalid
-=======
-
-        if json_data['results'] == None:
-            json_data_HERE = findGeoData(addr, 1)
-            latHERE = json_data_HERE['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude']
-            lngHERE = json_data_HERE['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude']
-            return jsonify({'Latitude':latHERE, 'Longitude':lngHERE})
-        else:
-            lat = json_data['results'][0]['geometry']['location']['lat']
-            lng = json_data['results'][0]['geometry']['location']['lng']
-            return jsonify({'Latitude':lat, 'Longitude':lng})
-
-    else:
->>>>>>> 65742da72e367963f9ec6ccec7d5135846d25e0b:geocoding.py
         return make_response(jsonify({'Invalid URI': 'To retrieve lat-lng, paste URL in http://localhost:5000/geocode/api/v1.0/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA format'}), 404)
 
 @app.errorhandler(404)
