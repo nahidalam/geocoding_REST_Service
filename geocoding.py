@@ -10,6 +10,7 @@ from flask import Flask, jsonify
 from flask import make_response
 from flask import abort
 from flask import request
+#from urllib.parse import quote
 import os
 import sys
 import json
@@ -25,6 +26,7 @@ app = Flask(__name__)
 #backup = 1 means using HERE API service
 def findGeoData(addr, backup):
     addrURL = addr.replace(' ', '+')
+    #addrURL = quote(addr)
     if backup == 0:
         #calling Google Maps API
         url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + addrURL + '&key=' + APIKey

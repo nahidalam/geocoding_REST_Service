@@ -1,6 +1,6 @@
 # RESTful Service for Geocoding
 
-##### This program take an address as input and returns the Lattitude and Longitude as the output. 
+##### This program take an address as input and returns the Lattitude and Longitude as the output.
 
 ## How to Run:
 
@@ -25,6 +25,15 @@ Paste below link in your browser
 You should see an output like below
 
 #### {
-  #### "Latitude": 37.4224082, 
+  #### "Latitude": 37.4224082,
   #### "Longitude": -122.0856086
 #### }
+
+
+## Further Improvements:
+
+I wanted to use urllib.parse.quote to escape invalid characters from the URL. But due to some library installation
+issues, I coudn't load urllib.parse library in my code. This is not a major issue, need to spend more time to fix it.
+
+One obvious Improvement is securing the RESTful web service. Right now, the service is open to public. One way to
+secure it is to force login through username and password. 
